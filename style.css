@@ -1,0 +1,37 @@
+* {
+    font-family: Inter;
+}
+
+* {
+    outline: rgb(83, 83, 83) solid 1.5px;
+}
+
+.question {
+    font-size: 16px;
+}
+
+#buttonbox {
+    border: 2px solid @borders;
+    background-color: @borders;
+}
+
+.scroll {
+    border-style: none;
+    font-size: 14px;
+}
+
+.modebuttons {
+    border-style: none;
+}
+
+.modebuttons:not(:checked):not(:hover) {
+    background-color: @borders;
+}
+
+#day {
+    border-radius: 10px 0px 0px 10px;
+}
+
+#night {
+    border-radius: 0px 10px 10px 0px;
+}

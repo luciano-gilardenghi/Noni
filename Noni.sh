@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/ruta/a/tu/carpeta/dist/tu_programa
+/ruta/a/tu/carpeta/dist/main.py

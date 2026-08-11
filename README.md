@@ -1,43 +1,43 @@
-# Noni - Gestor Nocturno de PC 🌙
+# Noni - Gestor Nocturno de PC (GUI Version) 🌙
 
-Noni es una herramienta de línea de comandos (CLI) diseñada para entornos Linux que automatiza y facilita la configuración del sistema para el consumo multimedia nocturno. 
+Noni es una aplicación de escritorio desarrollada en Python y GTK3 para entornos Linux. Automatiza y facilita la configuración del sistema para el consumo multimedia nocturno, integrando control de energía, gestión de audio mediante PulseAudio y manejo de ventanas.
 
-El script permite programar apagados automáticos, ajustar perfiles de audio para evitar ruidos molestos, apagar pantallas auxiliares sin afectar el brillo base del sistema, y generar listas de reproducción dinámicas para VLC.
+Esta versión representa una refactorización completa del proyecto original (CLI), implementando una arquitectura basada en Programación Orientada a Objetos (OOP), hilos (`threading`) para procesos asíncronos y una interfaz gráfica diseñada con Glade y CSS.
 
 ## ✨ Características Principales
 
-* **Gestión de Energía:** Programación y cancelación de apagado automático del sistema.
-* **Sistema de Perfiles (JSON):** Creación, edición y eliminación de múltiples perfiles de usuario guardados dinámicamente en formato JSON.
+* **Interfaz Gráfica (GTK3):** Navegación fluida mediante `Gtk.Stack`, con soporte para atajos de teclado y diseño estilizado vía CSS.
+* **Gestión de Energía Asíncrona:** Programación de apagado del sistema con un reloj en tiempo real ejecutándose en un hilo en segundo plano.
+* **Sistema de Perfiles (JSON):** Carga dinámica de configuraciones de usuario (directorios, extensiones, parámetros de audio y video).
 * **Audio Nocturno Avanzado:** Interacción nativa con el servidor de sonido mediante `pulsectl` para cambiar perfiles de tarjeta (HDMI/PC), desmutar y ajustar volumen.
-* **Control de Ventanas y Reproducción:** Uso de `ewmh` para posicionar la ventana de VLC en monitores específicos y `Playerctl` (D-Bus) para controlar la reproducción de forma asíncrona.
-* **Control de Pantallas:** Apagado de pantalla auxiliar mediante `screen_brightness_control`, con encendido automático sincronizado con el apagado del sistema.
+* **Control de Ventanas y Reproducción:** Uso de `ewmh` para posicionar la ventana de VLC en monitores específicos y `Playerctl` (D-Bus) para controlar la reproducción.
+* **Control de Pantallas:** Apagado de pantalla auxiliar mediante `screen_brightness_control`, con encendido automático sincronizado.
 
 ## 🛠️ Requisitos del Sistema
 
 Este script está diseñado para distribuciones GNU/Linux (X11) y requiere las siguientes dependencias y librerías de Python:
 
-**Dependencias del sistema:**
-* `python3`
-* `vlc` (reproductor multimedia)
-* Librerías de desarrollo de GObject Introspection (ej. `libgirepository1.0-dev` en Debian/Ubuntu)
+**Dependencias del sistema (Debian/Ubuntu/Mint):**
+```bash
+sudo apt install python3-gi gir1.2-gtk-3.0 gir1.2-playerctl-2.0 vlc light
+```
 
 **Librerías de Python:**
-Puedes instalar todas las dependencias ejecutando:
 ```bash
-pip install pulsectl ewmh natsort screeninfo screen-brightness-control pynput PyGObject
+pip install pulsectl ewmh natsort screeninfo screen-brightness-control PyGObject
 ```
 
 ## 🚀 Instalación y Ejecución
 
 1. Clonar el repositorio en tu máquina local:
 ```bash
-   git clone https://github.com/tu-usuario/noni.git
+   git clone https://github.com/luciano-gilardenghi/noni.git
    cd noni
 ```
 
 2. Para ejecutar el código fuente directamente desde la terminal:
 ```bash
-   python3 noni.py
+   python3 main.py
 ```
 
 ## 📦 Crear Ejecutable e Integración al Escritorio (Opcional)
@@ -46,7 +46,7 @@ Si deseas utilizar Noni como una aplicación independiente sin necesidad de invo
 
 ```bash
 pip install pyinstaller
-pyinstaller --onefile noni.py
+pyinstaller --onefile main.py
 ```
 Esto generará un ejecutable en la carpeta `dist/`.
 
@@ -63,5 +63,7 @@ En este repositorio se incluyen los archivos `noni.sh` y `noni.desktop` a modo d
 ## 📝 Créditos y Licencias
 
 * El código fuente de este proyecto es de mi autoría.
-* El ícono de la aplicación utilizado en el archivo `.desktop` fue obtenido de Flaticon: 
-  [Pokemon iconos creados por Roundicons Freebies - Flaticon](https://www.flaticon.es/icono-gratis/zubat_188999)
+* El ícono principal de la aplicación (`zubat.png`) fue obtenido de Flaticon: 
+  [Pokemon iconos creados por Roundicons Freebies - Flaticon](https://www.flaticon.es/iconos-gratis/pokemon)
+* Los íconos de la interfaz de usuario (Light/Dark mode, User) pertenecen a **Google Material Symbols**, utilizados bajo la licencia Apache 2.0.
+
