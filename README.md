@@ -7,17 +7,25 @@ El script permite programar apagados automáticos, ajustar perfiles de audio par
 ## ✨ Características Principales
 
 * **Gestión de Energía:** Programación y cancelación de apagado automático del sistema.
-* **Audio Nocturno:** Configuración automática del perfil de audio (HDMI Surround + Analog Stereo), desmutado y ajuste de volumen a niveles seguros (20%).
-* **Control de Pantallas:** Apagado de pantalla auxiliar mediante la utilidad `light`, con encendido automático 15 segundos antes del apagado del sistema.
-* **Gestor de Multimedia:** Escaneo de directorio local, filtrado de archivos de video (`.mkv`, `.mp4`) mediante expresiones regulares, y generación de listas de reproducción (`.m3u`) listas para reproducir en VLC.
+* **Sistema de Perfiles (JSON):** Creación, edición y eliminación de múltiples perfiles de usuario guardados dinámicamente en formato JSON.
+* **Audio Nocturno Avanzado:** Interacción nativa con el servidor de sonido mediante `pulsectl` para cambiar perfiles de tarjeta (HDMI/PC), desmutar y ajustar volumen.
+* **Control de Ventanas y Reproducción:** Uso de `ewmh` para posicionar la ventana de VLC en monitores específicos y `Playerctl` (D-Bus) para controlar la reproducción de forma asíncrona.
+* **Control de Pantallas:** Apagado de pantalla auxiliar mediante `screen_brightness_control`, con encendido automático sincronizado con el apagado del sistema.
 
 ## 🛠️ Requisitos del Sistema
 
-Este script está diseñado para distribuciones GNU/Linux y requiere las siguientes dependencias instaladas en el sistema:
+Este script está diseñado para distribuciones GNU/Linux (X11) y requiere las siguientes dependencias y librerías de Python:
+
+**Dependencias del sistema:**
 * `python3`
-* `pulseaudio` (comandos `pactl` y `pacmd`)
-* `light` (para el control de brillo de la pantalla)
 * `vlc` (reproductor multimedia)
+* Librerías de desarrollo de GObject Introspection (ej. `libgirepository1.0-dev` en Debian/Ubuntu)
+
+**Librerías de Python:**
+Puedes instalar todas las dependencias ejecutando:
+```bash
+pip install pulsectl ewmh natsort screeninfo screen-brightness-control pynput PyGObject
+```
 
 ## 🚀 Instalación y Ejecución
 
