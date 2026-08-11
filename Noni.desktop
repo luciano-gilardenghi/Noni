@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=Noni
+Comment=Gestor Nocturno de PC
+Exec=/ruta/a/tu/carpeta/dist/tu_programa.sh
+Terminal=true
+Type=Application
+Categories=Utility;Noni
+StartupNotify=false
+
+Icon=/ruta/a/tu/carpeta/zubat.png
+Path=
